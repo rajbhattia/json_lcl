@@ -38,18 +38,37 @@ class _HomePageState extends State<HomePage> {
           builder: (context, snapshot) {
             var mydata = json.decode(snapshot.data.toString());
             if (mydata == null) {
-              return Center(
+              return const Center(
                 child: Text('loading'),
               );
             } else {
-             return Center(
-              child: Text(
-                mydata["2"]["name"],
-                style: TextStyle(fontSize: 20.0),
-              ),
-            ); 
+              return Container(
+                color: Colors.blue,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        mydata["items"][0]["name"],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                       Text(
+                        mydata["items"][0]["surname"],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                       Text(
+                        mydata["items"][0]["fullname"],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                       Text(
+                        mydata["items"][0]["email"],
+                        style: const TextStyle(fontSize: 20.0),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             }
-            
           },
         ));
   }
